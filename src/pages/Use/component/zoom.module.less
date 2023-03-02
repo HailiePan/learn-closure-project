@@ -1,0 +1,35 @@
+.box {
+  margin: 50px;
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
+  position: relative;
+}
+.drag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 150px;
+  background-color: #cbd;
+}
+.left {
+  width: 10px;
+  height: calc(100% - 0px);
+  //   margin: 7px 0px;
+  position: absolute;
+  background-color: #000;
+  cursor: col-resize;
+  top: 0;
+  left: -5px;
+}
+.bottom {
+  width: calc(100% - 0px);
+  height: 10px;
+  //   margin: 0px 7px;
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  background-color: #000;
+  cursor: row-resize;
+}

@@ -2,7 +2,7 @@
  * Author  hailie.pan
  * Date  2022-12-12 23:04:19
  * LastEditors  hailie.pan
- * LastEditTime  2022-12-28 15:15:30
+ * LastEditTime  2023-01-17 16:02:58
  * Description  file content
  */
 import React, { useEffect } from "react";
@@ -35,6 +35,11 @@ export default function Function08() {
       })(i);
     }
   }, []);
+
+  // 变量提升;
+  /*
+  es6 变量先定义再使用 不能在定义变量之前使用变量
+  */
 
   return (
     <div id="btnwrap">

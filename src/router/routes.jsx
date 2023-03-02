@@ -2,12 +2,14 @@
  * Author  hailie.pan
  * Date  2022-08-26 11:36:11
  * LastEditors  hailie.pan
- * LastEditTime  2022-12-11 22:48:15
+ * LastEditTime  2023-03-02 21:51:06
  * Description  路由配置
  */
 import BaseLayouts from "../layouts";
 import Closure from "../pages/Closure";
-import Stack from "../pages/Stack";
+import DemoByMDN from "../pages/DemoByMDN";
+import Simple from "../pages/Simple";
+import Use from "../pages/Use";
 
 const routes = [
   {
@@ -21,14 +23,24 @@ const routes = [
     element: <BaseLayouts />,
     children: [
       {
-        label: "闭包",
+        label: "相关概念",
         path: "/content/closure",
         element: <Closure />,
       },
       {
-        label: "堆栈",
-        path: "/content/stack",
-        element: <Stack />,
+        label: "简单认识",
+        path: "/content/simple",
+        element: <Simple />,
+      },
+      // {
+      //   label: "mdn中的例子",
+      //   path: "/content/demoByMDN",
+      //   element: <DemoByMDN />,
+      // },
+      {
+        label: "使用场景",
+        path: "/content/use",
+        element: <Use />,
       },
     ],
   },
