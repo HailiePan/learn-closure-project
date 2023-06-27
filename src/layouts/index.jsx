@@ -2,7 +2,7 @@
  * Author  hailie.pan
  * Date  2022-12-11 22:37:54
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 21:54:16
+ * LastEditTime  2023-03-03 16:11:17
  * Description  file content
  */
 import React from "react";
@@ -13,7 +13,7 @@ import styles from "./index.module.less";
 
 const { Header, Content, Footer } = Layout;
 export default function Index() {
-  console.log("routes", routes);
+  // console.log("routes", routes);
 
   const arr = routes[1].children.map((item) => ({
     label: item.label,
@@ -43,7 +43,6 @@ export default function Index() {
           style={{
             background: "#fff",
             height: "100%",
-            border: "1px solid red",
             overflow: "scroll",
           }}
         >

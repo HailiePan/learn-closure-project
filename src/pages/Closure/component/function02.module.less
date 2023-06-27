@@ -1,0 +1,113 @@
+.recordingWave {
+  height: 84px;
+  margin: 6px 0;
+  border: 1px solid red;
+  width: 500px;
+  position: relative;
+  .icon {
+    position: absolute;
+    left: 50%;
+    width: 84px;
+    height: 84px;
+
+    text-align: center;
+    transform: translate(-50%, 0);
+    border: 1px solid rgb(255, 123, 0);
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+    .radOne {
+      transform-origin: 103% 39%;
+      animation-name: rotate;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .radTwo {
+      transform-origin: 55% 10%;
+      animation-name: rotate;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .radThree {
+      transform-origin: 95% 53%;
+      animation-name: rotate;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+  .waveContainer {
+    display: flex;
+    height: 86px;
+    width: 340px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px;
+    position: absolute;
+    z-index: 100;
+    .wave {
+      width: 43%;
+      display: flex;
+      padding: 0px;
+      align-items: center;
+      & span {
+        display: inline-block;
+        background-color: #21fffc;
+        width: 2px;
+        height: 4px;
+        margin-right: 3px;
+        border-radius: 4px;
+        transition: 0.25s;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+    }
+    .wave:first-child {
+      justify-content: flex-end;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate3D {
+  from {
+    transform: rotateX(73deg) rotateY(0deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(73deg) rotateY(0deg) rotateZ(360deg);
+  }
+}
+
+// loading 颜色变化的 采用了这个效果
+@keyframes dotFlashing {
+  0% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: rgb(120, 120, 120);
+  }
+}
+@keyframes exitAnimation {
+  0% {
+    background-position: 0;
+  }
+  // 倒数第二个
+  100% {
+    background-position: -4884px;
+  }
+}

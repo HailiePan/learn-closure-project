@@ -2,7 +2,7 @@
  * Author  hailie.pan
  * Date  2023-02-28 16:29:24
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 17:25:01
+ * LastEditTime  2023-03-03 16:18:47
  * Description  闭包的用途
  */
 import React, { useEffect } from "react";
@@ -29,14 +29,14 @@ export default function index() {
             children: <ForFn />,
           },
           {
-            label: `柯里化函数`,
-            key: "2",
-            children: <Kelihua />,
-          },
-          {
             label: "防抖节流",
             key: "3",
             children: <Fangdoujieliu />,
+          },
+          {
+            label: `柯里化函数`,
+            key: "2",
+            children: <Kelihua />,
           },
           {
             label: "拖拽放大",

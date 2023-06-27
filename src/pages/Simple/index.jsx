@@ -2,7 +2,7 @@
  * Author  hailie.pan
  * Date  2023-02-28 16:00:52
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 21:44:27
+ * LastEditTime  2023-04-28 14:28:20
  * Description  file content
  */
 import React from "react";
@@ -25,30 +25,41 @@ export default function index() {
   // }
 
   //   用闭包
-  function fa() {
-    var a = 10;
-    function fb() {
-      a--;
-      console.log("a", a);
-    }
-    return fb;
-  }
+  // function fa() {
+  //   var a = 10;
+  //   function fb() {
+  //     a--;
+  //     console.log("a", a);
+  //   }
+  //   return fb;
+  // }
 
-  var fn = fa();
+  // var fn = fa();
+
+  // 写一个函数，每执行一次就累计减一
+
+  function fn() {
+    var a = 10;
+    return function fb() {
+      a--;
+      console.log(a);
+    };
+  }
+  var fa = fn();
 
   return (
     <div style={{ padding: "20px" }}>
       <Button
         style={{ marginBottom: "20px" }}
         onClick={() => {
-          fn();
+          fa();
         }}
       >
         减1
       </Button>
       <div style={{ lineHeight: "30px" }}>
         <h3> 闭包的条件： </h3>
-        <p> 1.有函数嵌套</p>
+        <p>1.有函数嵌套</p>
         <p>2.内部函数引用外部作用域的变量 </p>
         <p>3.返回值是函数</p>
         <p>4.创建一个对象函数，让其长期驻留 </p>

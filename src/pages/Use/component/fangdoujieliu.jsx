@@ -2,7 +2,7 @@
  * Author  hailie.pan
  * Date  2023-02-28 17:36:13
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 21:50:20
+ * LastEditTime  2023-03-03 17:35:27
  * Description  file content
  */
 import React, { useEffect } from "react";
@@ -17,14 +17,14 @@ export default function Fangdoujieliu() {
     let timer = null;
     return function (e) {
       if (timer) {
-        clearTimeout(timer);
+        clearTimeout(timer); //触发了相同事件，取消当前计时，重新开始计时
       }
       timer = setTimeout(() => fn && fn(e), 1000);
     };
   }
   // 限制函数的执行频率，在期限时间内即使触发大量事件时，也只执行一次事件处理函数。
   useEffect(() => {
-    // 输入完之后请求一次
+    // 输入完之后请求一次 debounce(inputFn);
     document.getElementById("inputId").oninput = debounce(inputFn);
   }, []);
 
@@ -50,8 +50,8 @@ export default function Fangdoujieliu() {
   // 防抖必须等最后一次触发事件后才能执行事件函数，而节流是规定时间内必定会执行一次且只执行一次事件函数。
   return (
     <div style={{ padding: "0 20px" }}>
-      <p>节流是规定时间内必定会执行一次且只执行一次事件函数</p>
-      <p>防抖必须等最后一次触发事件后才能执行事件函数</p>
+      <p>节流是规定时间内必定会执行一次且只执行一次事件函数;</p>
+      <p>防抖必须等最后一次触发事件后才能执行事件函数.</p>
 
       <div style={{ display: "flex", marginTop: "20px" }}>
         <input

@@ -2,18 +2,59 @@
  * Author  hailie.pan
  * Date  2022-12-11 23:14:49
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 21:57:55
+ * LastEditTime  2023-05-29 17:52:03
  * Description  file content
  */
-import React from "react";
+import React, { useEffect } from "react";
+import svgPng from "../images/fangxiangpan.svg";
+import styles from "./function01.module.less";
 
 export default function Function01() {
   const fn = () => {
     console.log("fn");
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      const embed = document.querySelector("embed");
+      const dom = embed.getSVGDocument();
+
+      const top = dom.querySelector("#top");
+      const bottom = dom.querySelector("#bottom");
+      const left = dom.querySelector("#left");
+      const right = dom.querySelector("#right");
+      const center = dom.querySelector("#center");
+
+      top.setAttribute("fill", "rgba(0,255,255,0)");
+      bottom.setAttribute("fill", "rgba(0,255,255,0)");
+      left.setAttribute("fill", "rgba(0,255,255,0)");
+      right.setAttribute("fill", "rgba(0,255,255,0)");
+      center.setAttribute("fill", "rgba(0,255,255,0)");
+
+      bottom.addEventListener("mouseover", function () {
+        console.log("mouseover");
+        bottom.setAttribute("fill", "rgba(0,255,255,0.5)");
+      });
+      bottom.addEventListener("mouseout", function () {
+        bottom.setAttribute("fill", "rgba(0,0,0,0)");
+      });
+      bottom.addEventListener("click", function () {
+        console.log("click");
+        bottom.setAttribute("fill", "rgba(0,255,255,1)");
+      });
+    }, 100);
+  }, []);
   return (
     <div style={{ padding: "0 20px" }}>
+      <div className={styles.laba} />
+      <embed
+        id="girl"
+        src={svgPng}
+        width="300"
+        height="300"
+        type="image/svg+xml"
+        pluginspage="http://www.adobe.com/svg/viewer/install/"
+      />
       闭包：
       <br />
       一个函数的高级应用

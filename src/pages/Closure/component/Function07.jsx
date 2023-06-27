@@ -2,11 +2,83 @@
  * Author  hailie.pan
  * Date  2022-12-12 22:24:18
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 21:18:26
+ * LastEditTime  2023-06-07 18:07:29
  * Description  file content
  */
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { testName, testPwd } from "@/utils/reg";
+import styles from "./function07.module.less";
+
+import audioDefaultIcon from "./images/audio_icon_default_middleground.png";
+import recordIconActive from "./images/audio_icon_active_bg.png";
+import middleRadOne from "./images/middle_rad1.png";
+import middleRadTwo from "./images/middle_rad2.png";
+import middleRadThree from "./images/middle_rad3.png";
+
+const AudioWave = function (el, options) {
+  let interval = null;
+  const intervalDuration = 100;
+  let data = null;
+  let spanHeight = "6px";
+  const maxHeight = 50;
+  const config = {
+    noOfWaves: 5,
+    ...options,
+  };
+
+  const _render = (reset) => {
+    data.forEach((waveData, index) => {
+      const waveSpan = el.childNodes[index];
+      if (waveSpan && waveSpan.style) {
+        const newHeight = Number(maxHeight * waveData);
+        if (reset) {
+          waveSpan.style.height = spanHeight;
+        } else {
+          waveSpan.style.height =
+            !newHeight || newHeight < 2 ? "2px" : `${newHeight}px`;
+        }
+      }
+    });
+  };
+
+  const _init = () => {
+    data = new Array(config.noOfWaves).fill(10);
+    for (let i = 0; i < config.noOfWaves; i++) {
+      const waveSpan = document.createElement("span");
+      waveSpan.style.height = spanHeight;
+      el.appendChild(waveSpan);
+    }
+  };
+  const _reset = () => {
+    _render(true);
+  };
+  const onIntervalChanged = () => {
+    const partLength = Math.floor(config.noOfWaves / 2);
+    const tempData = new Array(partLength + 1).fill(0).map(() => Math.random());
+    data = [
+      ...tempData,
+      ...tempData.slice(0, Math.floor(config.noOfWaves / 2)).reverse(),
+    ];
+    _render();
+  };
+
+  const start = () => {
+    interval = setInterval(onIntervalChanged, intervalDuration);
+  };
+
+  const stop = () => {
+    clearInterval(interval);
+    _reset();
+  };
+
+  _init();
+
+  return {
+    start,
+    stop,
+  };
+};
+
 export default function Function07() {
   /*
     函数柯里化
@@ -48,5 +120,97 @@ export default function Function07() {
   //   按需引入
   //   这就是模块化规则，柯里化函数可以把封装变得更简单，以后规则改了，只改规则，其他的都不动
 
-  return <div>柯里化函数</div>;
+  const leftWaveDomRef = useRef(null);
+  const rightWaveDomRef = useRef(null);
+  const leftWaveRef = useRef(null);
+  const rightWaveRef = useRef(null);
+
+  const startWave = () => {
+    if (!leftWaveRef.current) {
+      leftWaveRef.current = new AudioWave(leftWaveDomRef.current, {
+        noOfWaves: 24,
+      });
+    }
+    if (!rightWaveRef.current) {
+      rightWaveRef.current = new AudioWave(rightWaveDomRef.current, {
+        noOfWaves: 24,
+      });
+    }
+    leftWaveRef.current.start();
+    rightWaveRef.current.start();
+  };
+  const stopWave = () => {
+    if (leftWaveRef.current) {
+      leftWaveRef.current.stop();
+    }
+    if (rightWaveRef.current) {
+      rightWaveRef.current.stop();
+    }
+  };
+
+  useEffect(() => {
+    startWave();
+    stopWave();
+
+    return () => {};
+  }, []);
+
+  const [onRecording, setOnRecording] = useState(false);
+  return (
+    <div className={styles.wrap}>
+      {/* 柯里化函数 */}
+
+      <div className={styles.recordingWave}>
+        <div className={styles.icon}>
+          {!onRecording && (
+            <img src={audioDefaultIcon} onClick={() => setOnRecording(true)} />
+          )}
+          {/* 录音中 */}
+          {onRecording && (
+            <div className={styles.onRecordingIcon}>
+              <img
+                style={{
+                  top: "28px",
+                  left: "16px",
+                }}
+                className={styles.radOne}
+                src={middleRadOne}
+              />
+              <img
+                style={{
+                  top: "39px",
+                  left: "23px",
+                }}
+                className={styles.radTwo}
+                src={middleRadTwo}
+              />
+              <img
+                style={{
+                  top: "16px",
+                  left: "13px",
+                }}
+                className={styles.radThree}
+                src={middleRadThree}
+              />
+              <img
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                }}
+                src={recordIconActive}
+                // 录音中点击
+                onClick={() => setOnRecording(false)}
+              />
+            </div>
+          )}
+        </div>
+        {/* 左右两边的跳动 */}
+        <div className={styles.waveContainer}>
+          <div ref={leftWaveDomRef} className={styles.wave} />
+          <div ref={rightWaveDomRef} className={styles.wave} />
+        </div>
+      </div>
+    </div>
+  );
 }

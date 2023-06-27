@@ -2,7 +2,7 @@
  * Author  hailie.pan
  * Date  2022-12-11 22:36:17
  * LastEditors  hailie.pan
- * LastEditTime  2022-12-12 23:07:06
+ * LastEditTime  2023-03-03 16:43:26
  * Description  file content
  */
 import React, { useState } from "react";
@@ -49,12 +49,12 @@ export default function Closure() {
             children: <Function04 />,
           },
           {
-            label: `闭包的应用`,
+            label: `栈内存堆内存`,
             key: "5",
             children: <Function05 />,
           },
           {
-            label: `闭包的语法糖`,
+            label: `全局作用域、局部作用域`,
             key: "6",
             children: <Function06 />,
           },

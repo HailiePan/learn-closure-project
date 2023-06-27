@@ -2,14 +2,15 @@
  * Author  hailie.pan
  * Date  2022-08-26 11:36:11
  * LastEditors  hailie.pan
- * LastEditTime  2023-03-02 21:51:06
+ * LastEditTime  2023-05-24 14:32:35
  * Description  路由配置
  */
 import BaseLayouts from "../layouts";
 import Closure from "../pages/Closure";
-import DemoByMDN from "../pages/DemoByMDN";
+import DemoByMDN from "../pages/Stack";
 import Simple from "../pages/Simple";
 import Use from "../pages/Use";
+import Timeline from "../pages/Timeline";
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     path: "/content",
     element: <BaseLayouts />,
     children: [
+      {
+        label: "时间线",
+        path: "/content/timeline",
+        element: <Timeline />,
+      },
       {
         label: "相关概念",
         path: "/content/closure",

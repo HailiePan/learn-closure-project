@@ -1,0 +1,213 @@
+.timeLineWrap {
+  width: 750px;
+  height: 1265px;
+  background: url("./assets/timeline-bg-big.jpg") center center no-repeat;
+  background-size: cover;
+  color: #fff;
+  padding: 160px 40px;
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 56px;
+    font-weight: 300;
+    margin-bottom: 90px;
+    border: 1px solid red;
+  }
+  .contentWrap {
+    .timeBlock {
+      position: relative;
+      height: 200px;
+      h5 {
+        position: absolute;
+        left: 0;
+        top: -6px;
+        font-size: 36px;
+        font-weight: 400;
+        animation: timeShowIn 1s ease 1 forwards;
+        opacity: 0;
+      }
+      .circleWrap {
+        position: absolute;
+        left: 146px;
+        top: 0;
+        width: 32px;
+        height: 32px;
+        .outCircle {
+          position: absolute;
+          left: 0px;
+          top: 0;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.5);
+          animation: outCircleShowIn 2s ease infinite forwards;
+
+          .innerCircle {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            animation: innerCircleShowIn 2s ease infinite forwards;
+          }
+        }
+        .line {
+          position: absolute;
+          left: 50%;
+          top: 100%;
+          transform: translate(-50%, 0);
+          opacity: 0;
+          background-color: rgba(255, 255, 255, 0.8);
+          width: 1px;
+          height: 168px;
+        }
+      }
+
+      p {
+        position: absolute;
+        right: 0;
+        top: -10px;
+        width: 70%;
+        line-height: 50px;
+        font-size: 30px;
+        animation: introduceShowIn 1s ease 1 forwards;
+        opacity: 0;
+      }
+    }
+
+    .timeBlock1 {
+      height: 200px;
+      .circleWrap {
+        .line {
+          height: 168px;
+        }
+        .verticalLine1 {
+          animation: verticalLine1ShowIn 1s ease 1 forwards;
+        }
+      }
+    }
+    .timeBlock2 {
+      height: 160px;
+      h5,
+      p {
+        animation-delay: 1s;
+      }
+      .circleWrap {
+        .line {
+          height: 128px;
+        }
+        .verticalLine2 {
+          animation: verticalLine2ShowIn 1s ease 1 forwards;
+          animation-delay: 1s;
+        }
+      }
+    }
+    .timeBlock3 {
+      height: 120px;
+      h5,
+      p {
+        animation-delay: 2s;
+      }
+      .circleWrap {
+        .line {
+          height: 88px;
+        }
+        .verticalLine3 {
+          animation: verticalLine3ShowIn 1s ease 1 forwards;
+          animation-delay: 2s;
+        }
+      }
+    }
+    .timeBlock4 {
+      height: 160px;
+      h5,
+      p {
+        animation-delay: 3s;
+      }
+      .circleWrap {
+        .line {
+          height: 128px;
+        }
+        .verticalLine4 {
+          animation: verticalLine2ShowIn 1s ease 1 forwards;
+          animation-delay: 3s;
+        }
+      }
+    }
+    .timeBlock5 {
+      height: 160px;
+      h5,
+      p {
+        animation-delay: 4s;
+      }
+    }
+  }
+}
+@keyframes timeShowIn {
+  from {
+    left: -10px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes introduceShowIn {
+  from {
+    right: -10px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes verticalLine1ShowIn {
+  from {
+    height: 0px;
+    opacity: 0;
+  }
+  to {
+    height: 168px;
+    opacity: 1;
+  }
+}
+@keyframes verticalLine2ShowIn {
+  from {
+    height: 0px;
+    opacity: 0;
+  }
+  to {
+    height: 128px;
+    opacity: 1;
+  }
+}
+@keyframes verticalLine3ShowIn {
+  from {
+    height: 0px;
+    opacity: 0;
+  }
+  to {
+    height: 88px;
+    opacity: 1;
+  }
+}
+
+@keyframes outCircleShowIn {
+  50% {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes innerCircleShowIn {
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
